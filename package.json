@@ -1,6 +1,6 @@
 {
   "name": "text-width-auto-label",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "文本宽度自适应标签组件",
   "main": "/src/index.tsx",
   "scripts": {
