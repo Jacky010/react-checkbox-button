@@ -1,8 +1,8 @@
 {
-  "name": "text-width-auto-label",
-  "version": "0.0.2",
-  "description": "文本宽度自适应标签组件",
-  "main": "/src/index.tsx",
+  "name": "react-checkbox-button",
+  "version": "0.1.4",
+  "description": "仿elemntUI多选按钮checkbox的React多选按钮组件，可应用于Antd的form表单场景",
+  "main": "dist/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config config/webpack.dev.config.js",
@@ -10,13 +10,13 @@
     "pub": "npm run build && npm publish"
   },
   "keywords": [
+    "checkbox",
+    "button",
     "react",
-    "text-auto",
-    "width-auto",
-    "text-width-auto"
+    "antd"
   ],
   "author": "jacky010",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.18.5",

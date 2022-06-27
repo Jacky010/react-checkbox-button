@@ -1,55 +1,68 @@
-import React, { useEffect, useRef } from 'react';
+import * as React from 'react';
+import './index.scss'
 
-interface WidthAutoLabelProps {
-    children: string;  // 要绘制的文本
+
+// 默认数据
+const list: any[] = []
+
+
+interface Data {
+    key?: string | number;
+    value: string | number;
+    label: string;
+    size: string;
+}
+
+
+interface CheckBoxProps {
+    data?: Data[]; // 父组件传入的数据源，若无则使用list数据
+    value?: any[];
+    size?: string;
+    onChange?: (checkList: any[], checked: boolean) => void;
 }
 
 
 /**
- * 文本宽度自适应标签组件
- * @param props
+ * 专业多选组件
  * @constructor
  */
-const WidthAutoLabel = (props: WidthAutoLabelProps) => {
-    const { children = '' } = props;
-    const ref = useRef<any>(null);
+const ReactCheckBox = (props: CheckBoxProps) => {
+    const {
+        data = list,
+        value = [],
+        size = 'default',
+        onChange = (checkList: any[]) => {}
+    } = props;
 
-    useEffect(() => {
-        drawText();
-    }, [children])
+    console.log('size', size)
 
 
-    const drawText = () => {
-        let canvas = ref.current;
-        if (!canvas) {
-            return;
-        }
-        let parentNode = canvas.parentNode;
-        if (!parentNode) {
-            return;
-        }
-        const { fontSize, fontStyle, fontWeight, fontFamily } = getComputedStyle(parentNode, null);
-        const { clientWidth, clientHeight } = parentNode;
-        canvas.width = clientWidth;
-        canvas.height = clientHeight;
-        let ctx = canvas.getContext("2d");
-        // 设置文本样式
-        ctx.font = `${fontStyle} ${fontWeight} ${fontSize} ${fontFamily}`;
-        ctx.textBaseline = 'top';
-        let y = Math.ceil((clientHeight - Number(fontSize.replace('px', ''))) / 2);
-        let x = 0;
-        // 居中显示
-        const { width: textWidth } = ctx.measureText(children);
-        if (textWidth < clientWidth) {
-            x = (clientWidth - textWidth) / 2;
-        }
-        // 绘制文本
-        ctx.fillText(children, x, y, clientWidth)
+    /**
+     * 选中事件
+     * @param value
+     * @param checked
+     */
+    const checkItem = (val: string, checked: boolean) => {
+        let newCheckedList:any[] = [...value];
+        newCheckedList = checked ? [...newCheckedList, val] : newCheckedList.filter(v => v !== val);
+        onChange(newCheckedList, true);
     }
 
+
     return (
-        <canvas ref={ref}></canvas>
+        <div className={['buttonWrap', size].join(' ')}>
+            {data.map((item: any, index: number) =>
+                <div
+                    className={['buttonItem', value.includes(item.value) ? 'isChecked' : ''].join(' ')}
+                    onClick={() => checkItem(item.value, !value.includes(item.value))}
+                    key={index}
+                >
+                    {item.label}
+                </div>
+            )}
+        </div>
     )
 }
 
-export default WidthAutoLabel;
+
+export default ReactCheckBox;

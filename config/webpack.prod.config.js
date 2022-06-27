@@ -49,7 +49,7 @@ const prodConfig = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "index.css" // 提取后的css的文件名
+            filename: "index.min.css" // 提取后的css的文件名
         })
     ],
     externals: { // 定义外部依赖，避免把react和react-dom打包进去
