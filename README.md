@@ -29,11 +29,18 @@ npm run build
 ```
 
 ## 使用
+
+```sh
+import ReactCheckboxButton from 'react-checkbox-button/src/index';
+```
+（注：如果没有安装sass，请先安装sass。`npm install node-sass sass --save-dev`）
+
 不在Antd表单中使用方法：
+
 ```$xslt
 import React, {useState} from 'react';
 import { render } from 'react-dom';
-import ReactCheckboxButton from 'react-checkbox-button';
+import ReactCheckboxButton from 'react-checkbox-button/src/index';
 
 
 // 数据源
@@ -76,11 +83,13 @@ const App = () => { 
 
 render(<App />, document.querySelector('#app'));
 ```
+
 在Antd表单中使用方法：
+
 ```$xslt
 import React, {useState} from 'react';
 import {  Form, Select } from 'antd';
-import ReactCheckboxButton from 'react-checkbox-button';
+import ReactCheckboxButton from 'react-checkbox-button/src/index';
 
 
 // 数据源
@@ -133,12 +142,14 @@ const App = () => { 
 
 render(<App />, document.querySelector('#app'));
 ```
+
 在Antd表单和不在Antd表单中一起使用代码：
+
 ```$xslt
 import React, {useState} from 'react';
 import './App.css';
 import {Form} from 'antd'
-import ReactCheckBoxButton from "react-checkbox-button";
+import ReactCheckBoxButton from "react-checkbox-button/src/index";
 
 const list = [  
     {id: 1, value: '上海', label: '上海'},  

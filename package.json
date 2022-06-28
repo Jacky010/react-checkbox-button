@@ -1,8 +1,8 @@
 {
   "name": "react-checkbox-button",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "仿elemntUI多选按钮checkbox的React多选按钮组件，可应用于Antd的form表单场景",
-  "main": "dist/index.ts",
+  "main": "/src/index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config config/webpack.dev.config.js",
