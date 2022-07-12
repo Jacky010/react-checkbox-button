@@ -1,9 +1,9 @@
 import * as React from "react";
 import {useState} from "react";
 import {createRoot} from 'react-dom/client';
-// import ReactCheckBox from "../../src/index";
-import ReactCheckBox from "react-checkbox-button/src/index";
-import 'react-checkbox-button/lib/index.min.css';
+import ReactCheckBox from "../../src/index";
+// import ReactCheckBox from "react-checkbox-button/src/index";
+// import 'react-checkbox-button/lib/index.min.css';
 
 const list: any[] = [
     {id: 1, value: '上海', label: '上海'},

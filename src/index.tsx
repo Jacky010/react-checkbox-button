@@ -3,7 +3,7 @@ import './index.scss'
 
 
 // 默认数据
-const list: any[] = []
+const list: any[] = [];
 
 
 interface Data {
@@ -16,9 +16,9 @@ interface Data {
 
 interface CheckBoxProps {
     data?: Data[]; // 父组件传入的数据源，若无则使用list数据
-    value?: any[];
-    size?: string;
-    onChange?: (checkList: any[], checked: boolean) => void;
+    value?: any[]; // 选中的值
+    size?: string; // 组件大小 默认default
+    onChange?: (checkList: any[], checked: boolean) => void; //选中值变化时，调用此函数
 }
 
 
