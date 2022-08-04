@@ -11,6 +11,7 @@ interface Data {
     value: string | number;
     label: string;
     size: string;
+    disabled: boolean;
 }
 
 
@@ -19,6 +20,7 @@ interface CheckBoxProps {
     value?: any[]; // 选中的值
     size?: string; // 组件大小 默认default
     onChange?: (checkList: any[], checked: boolean) => void; //选中值变化时，调用此函数
+    disabled?: boolean; // 是否禁用 默认false
 }
 
 
@@ -31,6 +33,7 @@ const ReactCheckBox = (props: CheckBoxProps) => {
         data = list,
         value = [],
         size = 'default',
+        disabled=false,
         onChange = (checkList: any[]) => {}
     } = props;
 
@@ -43,17 +46,17 @@ const ReactCheckBox = (props: CheckBoxProps) => {
      * @param checked
      */
     const checkItem = (val: string, checked: boolean) => {
+        if(disabled) return;
         let newCheckedList:any[] = [...value];
         newCheckedList = checked ? [...newCheckedList, val] : newCheckedList.filter(v => v !== val);
         onChange(newCheckedList, true);
     }
 
-
     return (
-        <div className={['buttonWrap', size].join(' ')}>
+        <div className={['buttonWrap', size,disabled ? 'isDisabled':'' ].join(' ')}>
             {data.map((item: any, index: number) =>
                 <div
-                    className={['buttonItem', value.includes(item.value) ? 'isChecked' : ''].join(' ')}
+                    className={['buttonItem', value.includes(item.value) ? 'isChecked' : '' ].join(' ')}
                     onClick={() => checkItem(item.value, !value.includes(item.value))}
                     key={index}
                 >

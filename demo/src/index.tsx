@@ -15,12 +15,12 @@ const list: any[] = [
 
 
 const App = () => {
-    const [value, setValue] = useState<any[]>([]);
+    const [value, setValue] = useState<any[]>(['广州']);
     return (
         <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', marginTop: '300px'}}>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <div>large：</div>
-                <ReactCheckBox
+                <ReactCheckBox  
                     data={list}
                     value={value}
                     size="large"

@@ -3,6 +3,28 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+
+    &.isDisabled {
+        .buttonItem {
+            color: #00000040;
+            background-color: #f5f5f5;
+            border-color: #d9d9d9;
+            cursor: not-allowed;
+
+        }
+
+        .isChecked {
+            color: #00000040;
+            background-color: #e6e6e6;
+            border-color: #d9d9d9;
+            box-shadow: none;
+            &:first-child{
+                border-left-color: #e6e6e6; 
+            }
+        }
+
+    }
+
     .buttonItem {
         line-height: 1;
         font-weight: 500;
@@ -45,6 +67,7 @@
 
 .small {
     height: 24px;
+
     .buttonItem {
         padding: 4px 16px;
     }
@@ -52,6 +75,7 @@
 
 .default {
     height: 30px;
+
     .buttonItem {
         padding: 7px 20px;
     }
@@ -59,6 +83,7 @@
 
 .large {
     height: 40px;
+
     .buttonItem {
         padding: 12px 24px;
     }
