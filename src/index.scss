@@ -41,6 +41,32 @@
     .isChecked:first-child {
         border-left-color: #409eff;
     }
+
+    &.isDisabled {
+        .buttonItem {
+            color: #c0c4cc;
+            background-color: #fff;
+            border-color: #ebeef5;
+            cursor: not-allowed;
+        }
+
+        .isChecked {
+            color: #c0c4cc;
+            border-color: #ebeef5;
+            box-shadow: none;
+            &:first-child{
+                border-left-color: #ebeef5;
+            }
+        }
+    }
+
+    .itemDisabled {
+        color: #c0c4cc;
+        background-color: #fff;
+        border-color: #ebeef5;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
 }
 
 .small {
