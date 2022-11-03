@@ -13,9 +13,18 @@ const list: any[] = [
     {id: 5, value: '杭州', label: '杭州'}
 ]
 
+const listBak: any[] = [
+  {id: 1, value: '上海', label: '上海', disabled: false},
+  {id: 2, value: '北京', label: '北京', disabled: false},
+  {id: 3, value: '成都', label: '成都', disabled: false},
+  {id: 4, value: '广州', label: '广州', disabled: true},
+  {id: 5, value: '杭州', label: '杭州', disabled: false}
+]
+
 
 const App = () => {
     const [value, setValue] = useState<any[]>([]);
+    const [valueDisabled, setValueDisabled] = useState<any[]>(['成都', '杭州']);
     return (
         <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', marginTop: '300px'}}>
             <div style={{display: 'flex', alignItems: 'center'}}>
@@ -31,15 +40,16 @@ const App = () => {
                 <div>default：</div>
                 <ReactCheckBox
                     data={list}
-                    value={value}
+                    value={valueDisabled}
                     size="default"
-                    onChange={(values:any[]) => setValue(values)}
+                    disabled={true}
+                    onChange={(values:any[]) => setValueDisabled(values)}
                 />
             </div>
             <div style={{display: 'flex', alignItems: 'center', marginTop: '10px'}}>
                 <div>small：</div>
                 <ReactCheckBox
-                    data={list}
+                    data={listBak}
                     value={value}
                     size="small"
                     onChange={(values:any[]) => setValue(values)}
