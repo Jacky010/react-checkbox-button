@@ -33,7 +33,7 @@ npm run build
 ```sh
 import ReactCheckboxButton from 'react-checkbox-button/src/index';
 ```
-（注：如果没有安装sass，请先安装sass。`npm install node-sass sass --save-dev`）
+（注：如果没有安装sass，请先安装sass。`npm install node-sass sass --save-dev` 或者 `cnpm install node-sass@latest`）
 
 不在Antd表单中使用方法：
 
@@ -148,7 +148,7 @@ render(<App />, document.querySelector('#app'));
 ```$xslt
 import React, {useState} from 'react';
 import './App.css';
-import {Form} from 'antd'
+import {Form} from 'antd';
 import ReactCheckBoxButton from "react-checkbox-button/src/index";
 
 const list = [  
@@ -171,7 +171,8 @@ function App() {
                     data={list}
                     size="small"
                     value={value}
-                    onChange={(values) => setValue(values)} />
+                    onChange={(values) => setValue(values)} 
+                />
                     
             <div>----------------------------------------------------</div>
 
@@ -196,20 +197,103 @@ function App() {
 export default App;
 ```
 
+增加disabled属性的使用方法：
+
+```
+import React, {useState} from 'react';
+import './App.css';
+import ReactCheckBoxButton from "react-checkbox-button/src/index";
+
+const list = [  
+    {id: 1, value: '上海', label: '上海'},  
+    {id: 2, value: '北京', label: '北京'},  
+    {id: 3, value: '成都', label: '成都'},  
+    {id: 4, value: '广州', label: '广州'},  
+    {id: 5, value: '杭州', label: '杭州'}
+]
+
+const listBak: any[] = [
+  {id: 1, value: '上海', label: '上海', disabled: false},
+  {id: 2, value: '北京', label: '北京', disabled: false},
+  {id: 3, value: '成都', label: '成都', disabled: false},
+  {id: 4, value: '广州', label: '广州', disabled: true},
+  {id: 5, value: '杭州', label: '杭州', disabled: false}
+]
+
+
+function App() {
+    const [value, setValue] = useState<any[]>([]);
+    const [valueDisabled, setValueDisabled] = useState<any[]>(['成都', '杭州']);
+    return (
+        <div className="App">
+        
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', marginTop: '300px'}}>
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div>large：</div>
+                    <ReactCheckBox
+                        data={list}
+                        value={value}
+                        size="large"
+                        onChange={(values:any[]) => setValue(values)}
+                    />
+                </div>
+                <div style={{display: 'flex', alignItems: 'center', marginTop: '10px'}}>
+                    <div>default：</div>
+                    <ReactCheckBox
+                        data={list}
+                        value={valueDisabled}
+                        size="default"
+                        disabled={true}
+                        onChange={(values:any[]) => setValueDisabled(values)}
+                    />
+                </div>
+                <div style={{display: 'flex', alignItems: 'center', marginTop: '10px'}}>
+                    <div>small：</div>
+                    <ReactCheckBox
+                        data={listBak}
+                        value={value}
+                        size="small"
+                        onChange={(values:any[]) => setValue(values)}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default App;
+```
+
 ## Result 
 
 ![test.gif](https://i.loli.net/2020/08/30/Tqh762QoeIrn3g5.gif)
 
 ![test1.gif](https://i.loli.net/2020/08/30/RCGBtOKcSHUP9pT.gif)
 
+![test2.gif](https://s2.loli.net/2022/11/03/y2wPmn31LrHtDYE.gif)
+
 ## API
 
-| 参数 | 说明 | 类型 | 示例 |
-| --- | --- | --- | --- |
-| data | 数据源(必传)  | Array | data={[{value: '成都', label: '成都'}, {value: '上海', label: '上海'}]} |
-| value | 默认选中值(不在Antd表单场景必传， antd表单中使用表单initialValue)  | Array | value={['成都']}或者initialValue={['成都', '北京']} |
-| size | 选择按钮大小(默认default，非必传)  | String | size="default" |
-| onChange | 选中按钮时调用此函数(不在Antd表单场景，必传)  | function(arr: any[], checked: boolean) | onChange={(values) => setValue(values)} |
+| 参数 | 说明 | 类型 | 示例 | 版本 |
+| --- | --- | --- | --- | --- |
+| data | 数据源(必传)  | Array | data={[{value: '成都', label: '成都'}, {value: '上海', label: '上海'}]} | - |
+| value | 默认选中值(不在Antd表单场景必传， antd表单中使用表单initialValue)  | Array | value={['成都']}或者initialValue={['成都', '北京']} | - |
+| size | 选择按钮大小(默认default，非必传)  | String | size="default" | - |
+| disabled | 是否禁用(默认false，非必传)  | Boolean | disabled="true" | - |
+| onChange | 选中按钮时调用此函数(不在Antd表单场景，必传)  | function(arr: any[], checked: boolean) | onChange={(values) => setValue(values)} | 0.1.7 |
+
+如果要禁用选中某个选项，在数据中增加disabled属性即可，如下：
+
+```
+const listBak: any[] = [
+  {id: 1, value: '上海', label: '上海', disabled: false},
+  {id: 2, value: '北京', label: '北京', disabled: false},
+  {id: 3, value: '成都', label: '成都', disabled: false},
+  {id: 4, value: '广州', label: '广州', disabled: true},
+  {id: 5, value: '杭州', label: '杭州', disabled: false}
+]
+```
+
 
 ## Author
 
